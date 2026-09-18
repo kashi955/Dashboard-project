@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Reports - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside>
+
+            <div class="top">
+
+                <div class="logo">
+                    <h2>Admin<span class="danger">Dashboard</span></h2>
+                </div>
+
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar">
+
+                <a href="Admin dashboardproject.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+
+                <a href="customers.html">
+                    <span class="material-symbols-outlined">person</span>
+                    <h3>Customers</h3>
+                </a>
+
+
+                <a href="analytics.html">
+                    <span class="material-symbols-outlined">insights</span>
+                    <h3>Analytics</h3>
+                </a>
+
+
+                <a href="messages.html">
+                    <span class="material-symbols-outlined">mail</span>
+                    <h3>Messages</h3>
+                </a>
+
+
+                <a href="products.html">
+                    <span class="material-symbols-outlined">inventory</span>
+                    <h3>Products</h3>
+                </a>
+
+
+                <a href="reports.html" class="active">
+                    <span class="material-symbols-outlined">report</span>
+                    <h3>Reports</h3>
+                </a>
+
+
+                <a href="settings.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Settings</h3>
+                </a>
+
+
+                <a href="Add-Product.html">
+                    <span class="material-symbols-outlined">add</span>
+                    <h3>Add Product</h3>
+                </a>
+
+                <a href="#" class="logout" onclick="showLogoutPopup(event)">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main>
+
+            <h1>Reports</h1>
+
+
+            <!-- Report Overview -->
+
+            <div class="insights">
+
+                <div>
+
+                    <span class="material-symbols-outlined">payments</span>
+
+                    <div class="middle">
+
+                        <div class="left">
+
+                            <h3>Sales Report</h3>
+
+                            <h1>₹1,25,000</h1>
+
+                            <small>Total Revenue</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="material-symbols-outlined">inventory_2</span>
+
+                    <div class="middle">
+
+                        <div class="left">
+
+                            <h3>Product Report</h3>
+
+                            <h1>24</h1>
+
+                            <small>Total Products</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <div>
+
+                    <span class="material-symbols-outlined">groups</span>
+
+                    <div class="middle">
+
+                        <div class="left">
+
+                            <h3>Customer Report</h3>
+
+                            <h1>5,420</h1>
+
+                            <small>Total Customers</small>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Available Reports -->
+
+            <div class="recent_order">
+
+                <h2>Available Reports</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Report Name</th>
+                            <th>Description</th>
+                            <th>Last Updated</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>Sales Report</td>
+
+                            <td>Revenue and sales performance</td>
+
+                            <td>16 Sep 2026</td>
+
+                            <td class="success">Ready</td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Product Report</td>
+
+                            <td>Product stock and inventory details</td>
+
+                            <td>16 Sep 2026</td>
+
+                            <td class="success">Ready</td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Customer Report</td>
+
+                            <td>Customer registration and account details</td>
+
+                            <td>16 Sep 2026</td>
+
+                            <td class="success">Ready</td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>Order Report</td>
+
+                            <td>Order history and order statistics</td>
+
+                            <td>16 Sep 2026</td>
+
+                            <td class="success">Ready</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Generate Report -->
+
+            <div class="recent_order">
+
+                <h2>Generate / Download Report</h2>
+
+                <p>
+                    Generate reports to review and download your dashboard data.
+                </p>
+
+                <br>
+
+
+                <button class="primary">
+
+                    <span class="material-symbols-outlined">download</span>
+
+                    Download Sales Report
+
+                </button>
+
+
+                <button class="primary">
+
+                    <span class="material-symbols-outlined">download</span>
+
+                    Download Product Report
+
+                </button>
+
+
+                <button class="primary">
+
+                    <span class="material-symbols-outlined">download</span>
+
+                    Download Customer Report
+
+                </button>
+
+
+                <button class="primary">
+
+                    <span class="material-symbols-outlined">download</span>
+
+                    Download Order Report
+
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+
+
+     <!-- Logout Confirmation Popup -->
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <span class="material-symbols-outlined logout-icon">
+            logout
+        </span>
+
+        <h2>Logout confirmation</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button onclick="confirmLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

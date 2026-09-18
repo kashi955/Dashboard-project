@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width,intial-scaled=1.0">
+    <title>UX/UI</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined">
+    <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+        <div class="container">
+           
+            <!--aside section start-->
+            <aside>
+              
+                <div class="top">
+
+                  <div class="logo">
+                    <h2>K<span class="danger">Tiwari</span></h2>
+                  </div>
+                  <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                  </div>
+                </div>      
+                <!-- end top-->   
+                 
+                <div class="sidebar">
+
+                   <a href="Admin dashboardproject.html" class="active">
+                       <span class="material-symbols-outlined">grid_view</span>
+                       <h3>Dashbord</h3>
+                    </a>
+                     <a href="customers.html">
+                       <span class="material-symbols-outlined">person_outline</span>
+                       <h3>Customers</h3>
+                    </a>
+                     <a href="analytics.html">
+                       <span class="material-symbols-outlined">insights</span>
+                       <h3>Analytics</h3>
+                    </a>
+                     <a href="messages.html">
+                       <span class="material-symbols-outlined">mail</span>
+                       <h3>Messages</h3>
+                        <span class="msg_count">14</span>
+                    </a>
+                     <a href="products.html">
+                       <span class="material-symbols-outlined">inventory_2</span>
+                       <h3>Products</h3>
+                    </a>
+                     <a href="reports.html">
+                       <span class="material-symbols-outlined">report</span>
+                       <h3>Reports</h3>
+                    </a>
+                     <a href="settings.html">
+                       <span class="material-symbols-outlined">settings</span>
+                       <h3>settings</h3>
+                    </a>
+                     <a href="Add-Product.html">
+                        <span class="material-symbols-outlined">add</span>
+                        <h3>Add Products</h3>
+                     </a>
+                     
+                     <a href="#" class="logout" onclick="showLogoutPopup(event)">
+                        <span class="material-symbols-outlined">logout</span>
+                        <h3>Logout</h3>
+                     </a>
+                    
+                </div>    
+            
+            
+            </aside>
+            <!-- aside section end-->
+       
+             <!--main section start-->
+             
+             
+             
+             
+              <main>
+                <h1>Dashboard</h1>
+                
+                <div class="date">
+                 <input type="date">
+                </div>
+                
+                <div class="insights">
+                <!----start selling-->
+                   <div class="sales">
+                      <span class="material-symbols-outlined">trending_up</span>
+                       <div class="middle">
+                        <div class="left">
+                          <h3>Total Sales</h3>
+                          <h1>$25,023</h1>
+                          </div>
+                          <div class="progress">
+                            <svg>
+                               <circle r="30" cy="40" cx="40"></circle>
+                              </svg>
+                              <div class="number">80%</div>
+                              </div>
+                    </div>
+                      <small>Last 24 Hours</small>
+                    </div>
+                <!---end selling-->
+               
+              
+                   <!----start expenses-->
+                   <div class="expenses">
+                      <span class="material-symbols-outlined">local_mall</span>
+                       <div class="middle">
+                        <div class="left">
+                          <h3>Total Orders</h3>
+                          <h1>$25,023</h1>
+                          </div>
+                          <div class="progress">
+                            <svg>
+                               <circle r="30" cy="40" cx="40"></circle>
+                              </svg>
+                              <div class="number">80%</div>
+                              </div>
+                    </div>
+                      <small>Last 24 Hours</small>
+                    </div>
+                <!---end expenses-->
+              
+                 <!----start expenses-->
+                   <div class="Income">
+                      <span class="material-symbols-outlined">stacked_line_chart</span>
+                       <div class="middle">
+                        <div class="left">
+                          <h3>Total Customers</h3>
+                          <h1>$25,023</h1>
+                          </div>
+                          <div class="progress">
+                            <svg>
+                               <circle r="30" cy="40" cx="40"></circle>
+                              </svg>
+                              <div class="number">80%</div>
+                              </div>
+                    </div>
+                      <small>Last 24 Hours</small>
+                    </div>
+                <!---end selling-->
+              </div>
+              <!---end inside-->
+              <!--Start recent order-->
+              <div class="recent_order">
+                <h1>Recent orders</h1>
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Customer</th>
+                      <th>Product</th>
+                      <th>Amount</th>
+                      <th>Status</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    
+                    
+                    <tr>
+                      <td>Rahul Sharma</td>
+                      <td>Laptop</td>
+                      <td>$1200</td>
+                      <td class="Success">Delivered</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Priya Singh</td>
+                      <td>Smartphone</td>
+                      <td>$850</td>
+                      <td class="warning">Pending</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Aman Verma</td>
+                      <td>Headphones</td>
+                      <td>$150</td>
+                      <td class="success">Delivered</td>
+                      
+                    </tr>
+                    <tr>
+                      <td>Neha Gupta</td>
+                      <td>smart Watch</td>
+                      <td>$220</td>
+                      <td class="danger">Cancelled</td>
+                      
+                    </tr>
+
+      <tr>
+        <td>Rohit Kumar</td>
+        <td>Keyboard</td>
+        <td>$75</td>
+        <td class="success">Delivered</td>
+      </tr>
+                  
+                  
+                  </tbody>
+                </table>
+              </div>  
+
+
+
+
+
+              <!---end recent order-->
+             
+            
+            </main> 
+             <!-- main section end--> 
+              
+             <!-- start right section-->
+             <div class="right">
+                <div class ="top">
+
+                  <button id="menu_bar">
+                    <span class ="material-symbols-outlined">menu</span>
+                  </button>
+                  <div class="theme-toggler">
+                    <span class="material-symbols-outlined ">light_mode</span>
+                    <span class="material-symbols-outlined ">dark_mode</span>
+                  </div>
+                    <div class="profile">
+                      <div class="info">
+                        <p><b>Tiwari</b></p>
+                        <p>Admin</p>
+                        <small class="text-muted"></small>
+                      </div>
+                      <div class="profile-photo">
+                        <img src="images/Kashish.png" alt="">
+                    </div>
+                    </div>
+             
+                  </div>
+                  <!--end top-->
+                  <!--start recent updates-->
+         <div class="recent_updates">
+          <h2>Recent Updates</h2>  
+          <div class="updates">
+          <div class="update">
+            <div class="profile-photo">
+               <img src="images/Kashish.png" alt="">    
+            </div> 
+            <div class="message">
+              <p><b>Kashish</b>Receive His Order</p>
+              </div>    
+          </div>
+           <div class="update">
+            <div class="profile-photo">
+               <img src="images/Kashish.png" alt="">    
+            </div> 
+            <div class="message">
+              <p><b>Kashish</b>Receive His Order</p>
+              </div>    
+          </div>
+          <div class="update">
+            <div class="profile-photo">
+               <img src="images/Kashish.png" alt="">    
+            </div> 
+            <div class="message">
+              <p><b>Kashish</b>Receive His Order</p>
+              </div>    
+          </div>
+          </div>
+
+         </div> 
+         <!--end recent updates-->
+         <!--Start sale analytic-->
+         <div class="sales_analytics">
+          <h2>Sales Analytics</h2>
+          
+          <div class="item online">
+             <div class="icon">
+              <span class="material-symbols-outlined">Shopping_Cart</span>
+             </div>  
+             <div class="right_text">
+              <div class="info">
+                <h3>Online Orders</h3>
+                <small class="text-muted">Last seen 2 Hours</small>
+                </div>
+                <h5 class="danger">-17%</h5>
+                <h3>3849</h3>
+          </div>
+         </div>
+         <div class="item online">
+             <div class="icon">
+              <span class="material-symbols-outlined">Shopping_Cart</span>
+             </div>  
+             <div class="right_text">
+              <div class="info">
+                <h3>Online Orders</h3>
+                <small class="text-muted">Last seen 2 Hours</small>
+                </div>
+                <h5 class="danger">-17%</h5>
+                <h3>3849</h3>
+          </div>
+         </div>
+         <div class="item online">
+             <div class="icon">
+              <span class="material-symbols-outlined">Shopping_Cart</span>
+             </div>  
+             <div class="right_text">
+              <div class="info">
+                <h3>Online Orders</h3>
+                <small class="text-muted">Last seen 2 Hours</small>
+                </div>
+                <h5 class="danger">-17%</h5>
+                <h3>3849</h3>
+          </div>
+          </div>
+        
+        
+        <div class=" item add_products">
+            <div>
+                <span class="material-symbols-outlined">Add</span>
+            </div>
+        </div>
+        </div>
+         <!--End sale analytic-->
+        
+      </div>
+        
+        <!--end right section-->
+      </div>  
+        
+      <!-- Logout Confirmation Popup -->
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <span class="material-symbols-outlined logout-icon">
+            logout
+        </span>
+
+        <h2>Logout confirmation</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button onclick="confirmLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+      
+      <script src="script.js"></script>
+     </body>
+     
+     </html>

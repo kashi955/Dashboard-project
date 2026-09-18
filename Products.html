@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Products - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside>
+
+            <div class="top">
+
+                <div class="logo">
+                    <h2>Admin<span class="danger">Dashboard</span></h2>
+                </div>
+
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+
+            </div>
+
+
+            <div class="sidebar">
+
+                <a href="Admin dashboardproject.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+
+                <a href="customers.html">
+                    <span class="material-symbols-outlined">person</span>
+                    <h3>Customers</h3>
+                </a>
+
+
+                <a href="analytics.html">
+                    <span class="material-symbols-outlined">insights</span>
+                    <h3>Analytics</h3>
+                </a>
+
+
+                <a href="messages.html">
+                    <span class="material-symbols-outlined">mail</span>
+                    <h3>Messages</h3>
+                </a>
+
+
+                <a href="products.html" class="active">
+                    <span class="material-symbols-outlined">inventory</span>
+                    <h3>Products</h3>
+                </a>
+
+
+                <a href="reports.html">
+                    <span class="material-symbols-outlined">report</span>
+                    <h3>Reports</h3>
+                </a>
+
+
+                <a href="settings.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Settings</h3>
+                </a>
+
+
+                <a href="Add-Product.html">
+                    <span class="material-symbols-outlined">add</span>
+                    <h3>Add Product</h3>
+                </a>
+
+
+                <a href="#" class="logout" onclick="showLogoutPopup(event)">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main>
+
+            <h1>Products</h1>
+
+
+            <!-- Product Overview -->
+
+            <div class="insights">
+
+                <div>
+                    <span class="material-symbols-outlined">inventory_2</span>
+
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Total Products</h3>
+                            <h1>24</h1>
+                            <small>All Products</small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <span class="material-symbols-outlined">check_circle</span>
+
+                    <div class="middle">
+                        <div class="left">
+                            <h3>In Stock</h3>
+                            <h1>18</h1>
+                            <small>Available Products</small>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div>
+                    <span class="material-symbols-outlined">warning</span>
+
+                    <div class="middle">
+                        <div class="left">
+                            <h3>Low Stock</h3>
+                            <h1>6</h1>
+                            <small>Needs Restocking</small>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- Product List -->
+
+            <div class="recent_order">
+
+                <h2>Product List</h2>
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Product Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Stock</th>
+                            <th>Status</th>
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+                            <td>Wireless Headphones</td>
+                            <td>Electronics</td>
+                            <td>₹2,499</td>
+                            <td>45</td>
+                            <td class="success">In Stock</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Smart Watch</td>
+                            <td>Electronics</td>
+                            <td>₹3,999</td>
+                            <td>28</td>
+                            <td class="success">In Stock</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Running Shoes</td>
+                            <td>Footwear</td>
+                            <td>₹1,899</td>
+                            <td>12</td>
+                            <td class="success">In Stock</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Leather Backpack</td>
+                            <td>Accessories</td>
+                            <td>₹1,499</td>
+                            <td>7</td>
+                            <td class="warning">Low Stock</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Bluetooth Speaker</td>
+                            <td>Electronics</td>
+                            <td>₹1,299</td>
+                            <td>5</td>
+                            <td class="warning">Low Stock</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Cotton T-Shirt</td>
+                            <td>Clothing</td>
+                            <td>₹699</td>
+                            <td>32</td>
+                            <td class="success">In Stock</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Travel Bag</td>
+                            <td>Accessories</td>
+                            <td>₹1,799</td>
+                            <td>4</td>
+                            <td class="warning">Low Stock</td>
+                        </tr>
+
+
+                        <tr>
+                            <td>Gaming Mouse</td>
+                            <td>Electronics</td>
+                            <td>₹899</td>
+                            <td>21</td>
+                            <td class="success">In Stock</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+            <!-- Add Product Section -->
+
+            <div class="recent_order">
+
+                <h2>Add Product</h2>
+
+                <p>
+                    Add new products to your inventory and manage product stock.
+                </p>
+
+                <br>
+
+                <button class="primary">
+                    <span class="material-symbols-outlined">add</span>
+                    Add New Product
+                </button>
+
+            </div>
+
+        </main>
+
+    </div>
+
+    <!-- Logout Confirmation Popup -->
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <span class="material-symbols-outlined logout-icon">
+            logout
+        </span>
+
+        <h2>Logout confirmation</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button onclick="confirmLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

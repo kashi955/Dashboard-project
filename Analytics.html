@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Analytics - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <style>
+
+        /* ================= ANALYTICS PAGE ================= */
+
+        .analytics-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .analytics-card {
+            background: var(--clr-white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-2);
+            box-shadow: var(--box-shadow);
+        }
+
+        .analytics-card span {
+            background: var(--clr-primary);
+            color: white;
+            padding: 0.8rem;
+            border-radius: 50%;
+            font-size: 1.8rem;
+        }
+
+        .analytics-card h3 {
+            margin: 1rem 0 0.4rem;
+        }
+
+        .analytics-card h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .analytics-card p {
+            margin-top: 0.5rem;
+            color: var(--clr-info-dark);
+        }
+
+
+        /* Analytics Sections */
+
+        .analytics-section {
+            background: var(--clr-white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-2);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .analytics-section h2 {
+            margin-bottom: 1.5rem;
+        }
+
+
+        /* Revenue Chart */
+
+        .chart {
+            height: 250px;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            gap: 1rem;
+            border-bottom: 2px solid var(--clr-info-light);
+            padding: 1rem 0 0;
+        }
+
+        .bar {
+            width: 45px;
+            background: var(--clr-primary);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+        }
+
+        .bar span {
+            position: absolute;
+            bottom: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--clr-dark);
+            font-size: 0.8rem;
+        }
+
+
+        /* Orders Chart */
+
+        .orders-chart {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .order-row {
+            display: grid;
+            grid-template-columns: 100px 1fr 50px;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .order-bar {
+            height: 18px;
+            background: var(--clr-primary);
+            border-radius: 10px;
+        }
+
+
+        /* Customer Growth */
+
+        .growth-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+
+        .growth-box {
+            padding: 1.2rem;
+            background: var(--clr-background);
+            border-radius: var(--border-radius-1);
+            text-align: center;
+        }
+
+        .growth-box h3 {
+            margin-bottom: 0.5rem;
+        }
+
+        .growth-box p {
+            color: var(--clr-success);
+            font-weight: 600;
+        }
+
+
+        /* Monthly Performance */
+
+        .performance-table {
+            width: 100%;
+            text-align: left;
+        }
+
+        .performance-table th {
+            padding: 1rem;
+        }
+
+        .performance-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--clr-info-light);
+        }
+
+        .performance-table .positive {
+            color: var(--clr-success);
+            font-weight: 600;
+        }
+
+
+        /* Responsive */
+
+        @media screen and (max-width: 1200px) {
+
+            .analytics-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .growth-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .analytics-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .growth-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .order-row {
+                grid-template-columns: 80px 1fr 40px;
+            }
+
+        }
+
+        
+/* Logout Popup */
+
+.logout-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.logout-box {
+    width: 380px;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.logout-icon {
+    font-size: 45px;
+    color: #6d78ed;
+    margin-bottom: 10px;
+}
+
+.logout-box h2 {
+    margin-bottom: 10px;
+}
+
+.logout-box p {
+    color: #71839d;
+    margin-bottom: 25px;
+}
+
+.logout-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logout-buttons button {
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.logout-buttons button:first-child {
+    background: #6d78ed;
+    color: white;
+}
+
+.logout-buttons button:last-child {
+    background: #eeeeee;
+    color: #333;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside>
+
+            <div class="top">
+
+                <div class="logo">
+
+                    <h2>Admin<span class="danger">Dashboard</span></h2>
+
+                </div>
+
+                <div class="close" id="close_btn">
+
+                    <span class="material-symbols-outlined">close</span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar">
+
+
+                <!-- Dashboard -->
+
+                <a href="Admin dashboardproject.html">
+
+                    <span class="material-symbols-outlined">
+                        dashboard
+                    </span>
+
+                    <h3>Dashboard</h3>
+
+                </a>
+
+
+                <!-- Customers -->
+
+                <a href="customers.html">
+
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+
+                    <h3>Customers</h3>
+
+                </a>
+
+
+                <!-- Analytics -->
+
+                <a href="analytics.html" class="active">
+
+                    <span class="material-symbols-outlined">
+                        insights
+                    </span>
+
+                    <h3>Analytics</h3>
+
+                </a>
+
+
+                <!-- Messages -->
+
+                <a href="messages.html">
+
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+
+                    <h3>Messages</h3>
+
+                </a>
+
+
+                <!-- Products -->
+
+                <a href="products.html">
+
+                    <span class="material-symbols-outlined">
+                        inventory
+                    </span>
+
+                    <h3>Products</h3>
+
+                </a>
+
+
+                <!-- Reports -->
+
+                <a href="reports.html">
+
+                    <span class="material-symbols-outlined">
+                        report
+                    </span>
+
+                    <h3>Reports</h3>
+
+                </a>
+
+
+                <!-- Settings -->
+
+                <a href="settings.html">
+
+                    <span class="material-symbols-outlined">
+                        settings
+                    </span>
+
+                    <h3>Settings</h3>
+
+                </a>
+
+
+                <!-- Add Product -->
+
+                <a href="Add-Product.html">
+
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+
+                    <h3>Add Product</h3>
+
+                </a>
+
+
+                <!-- Logout -->
+
+                <a href="#" class="logout" onclick="showLogoutPopup(event)">
+
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+
+                    <h3>Logout</h3>
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main>
+
+            <h1>Analytics</h1>
+
+
+            <!-- ================= SUMMARY CARDS ================= -->
+
+            <div class="analytics-cards">
+
+
+                <div class="analytics-card">
+
+                    <span class="material-symbols-outlined">
+                        payments
+                    </span>
+
+                    <h3>Total Revenue</h3>
+
+                    <h2>₹1,25,000</h2>
+
+                    <p>+12.5% this month</p>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <span class="material-symbols-outlined">
+                        shopping_cart
+                    </span>
+
+                    <h3>Total Orders</h3>
+
+                    <h2>1,250</h2>
+
+                    <p>+8.2% this month</p>
+
+                </div>
+
+
+                <div class="analytics-card">
+
+                    <span class="material-symbols-outlined">
+                        groups
+                    </span>
+
+                    <h3>Total Customers</h3>
+
+                    <h2>5,420</h2>
+
+                    <p>+15.4% this month</p>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= REVENUE CHART ================= -->
+
+            <div class="analytics-section">
+
+                <h2>Revenue Chart</h2>
+
+                <div class="chart">
+
+                    <div class="bar" style="height: 35%;">
+                        <span>Jan</span>
+                    </div>
+
+                    <div class="bar" style="height: 50%;">
+                        <span>Feb</span>
+                    </div>
+
+                    <div class="bar" style="height: 45%;">
+                        <span>Mar</span>
+                    </div>
+
+                    <div class="bar" style="height: 65%;">
+                        <span>Apr</span>
+                    </div>
+
+                    <div class="bar" style="height: 75%;">
+                        <span>May</span>
+                    </div>
+
+                    <div class="bar" style="height: 90%;">
+                        <span>Jun</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= ORDERS CHART ================= -->
+
+            <div class="analytics-section">
+
+                <h2>Orders Chart</h2>
+
+                <div class="orders-chart">
+
+
+                    <div class="order-row">
+
+                        <span>January</span>
+
+                        <div class="order-bar" style="width: 45%;"></div>
+
+                        <strong>450</strong>
+
+                    </div>
+
+
+                    <div class="order-row">
+
+                        <span>February</span>
+
+                        <div class="order-bar" style="width: 60%;"></div>
+
+                        <strong>600</strong>
+
+                    </div>
+
+
+                    <div class="order-row">
+
+                        <span>March</span>
+
+                        <div class="order-bar" style="width: 70%;"></div>
+
+                        <strong>700</strong>
+
+                    </div>
+
+
+                    <div class="order-row">
+
+                        <span>April</span>
+
+                        <div class="order-bar" style="width: 80%;"></div>
+
+                        <strong>800</strong>
+
+                    </div>
+
+
+                    <div class="order-row">
+
+                        <span>May</span>
+
+                        <div class="order-bar" style="width: 90%;"></div>
+
+                        <strong>900</strong>
+
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= CUSTOMER GROWTH ================= -->
+
+            <div class="analytics-section">
+
+                <h2>Customer Growth</h2>
+
+                <div class="growth-grid">
+
+
+                    <div class="growth-box">
+
+                        <h3>January</h3>
+
+                        <h2>3,850</h2>
+
+                        <p>+8%</p>
+
+                    </div>
+
+
+                    <div class="growth-box">
+
+                        <h3>February</h3>
+
+                        <h2>4,200</h2>
+
+                        <p>+9%</p>
+
+                    </div>
+
+
+                    <div class="growth-box">
+
+                        <h3>March</h3>
+
+                        <h2>4,750</h2>
+
+                        <p>+13%</p>
+
+                    </div>
+
+
+                    <div class="growth-box">
+
+                        <h3>April</h3>
+
+                        <h2>5,420</h2>
+
+                        <p>+14%</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= MONTHLY PERFORMANCE ================= -->
+
+            <div class="analytics-section">
+
+                <h2>Monthly Performance</h2>
+
+                <table class="performance-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Month</th>
+
+                            <th>Revenue</th>
+
+                            <th>Orders</th>
+
+                            <th>Customers</th>
+
+                            <th>Growth</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+                        <tr>
+
+                            <td>January</td>
+
+                            <td>₹75,000</td>
+
+                            <td>450</td>
+
+                            <td>3,850</td>
+
+                            <td class="positive">+8%</td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>February</td>
+
+                            <td>₹85,000</td>
+
+                            <td>600</td>
+
+                            <td>4,200</td>
+
+                            <td class="positive">+9%</td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>March</td>
+
+                            <td>₹1,05,000</td>
+
+                            <td>700</td>
+
+                            <td>4,750</td>
+
+                            <td class="positive">+13%</td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>April</td>
+
+                            <td>₹1,15,000</td>
+
+                            <td>800</td>
+
+                            <td>5,100</td>
+
+                            <td class="positive">+14%</td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td>May</td>
+
+                            <td>₹1,25,000</td>
+
+                            <td>900</td>
+
+                            <td>5,420</td>
+
+                            <td class="positive">+16%</td>
+
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+
+        </main>
+
+    </div>
+
+    <!-- Logout Confirmation Popup -->
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <span class="material-symbols-outlined logout-icon">
+            logout
+        </span>
+
+        <h2>Logout confirmation</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button onclick="confirmLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Messages - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <style>
+
+        /* ================= MESSAGES PAGE ================= */
+
+        .message-summary {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .message-card {
+            background: var(--clr-white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-2);
+            box-shadow: var(--box-shadow);
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+        .message-card span {
+            background: var(--clr-primary);
+            color: white;
+            padding: 0.9rem;
+            border-radius: 50%;
+            font-size: 1.8rem;
+        }
+
+        .message-card h3 {
+            margin-bottom: 0.4rem;
+        }
+
+        .message-card h2 {
+            margin: 0;
+            font-size: 1.8rem;
+        }
+
+        .message-card p {
+            color: var(--clr-info-dark);
+            margin-top: 0.3rem;
+        }
+
+        .inbox-container {
+            background: var(--clr-white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-2);
+            box-shadow: var(--box-shadow);
+            margin-bottom: 2rem;
+        }
+
+        .inbox-container h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .message-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .message-table th {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 2px solid var(--clr-info-light);
+        }
+
+        .message-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--clr-info-light);
+        }
+
+        .message-table tbody tr:hover {
+            background: var(--clr-background);
+        }
+
+        .sender {
+            font-weight: 600;
+        }
+
+        .subject {
+            font-weight: 600;
+        }
+
+        .message-preview {
+            color: var(--clr-info-dark);
+            font-size: 0.85rem;
+            margin-top: 0.3rem;
+        }
+
+        .unread {
+            font-weight: 600;
+        }
+
+        .read-status {
+            color: var(--clr-success);
+            font-weight: 600;
+        }
+
+        .unread-status {
+            color: var(--clr-primary);
+            font-weight: 600;
+        }
+
+        .message-date {
+            color: var(--clr-info-dark);
+            white-space: nowrap;
+        }
+
+        @media screen and (max-width: 1200px) {
+
+            .message-summary {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+        }
+
+        @media screen and (max-width: 768px) {
+
+            .message-summary {
+                grid-template-columns: 1fr;
+            }
+
+            .inbox-container {
+                overflow-x: auto;
+            }
+
+            .message-table {
+                min-width: 750px;
+            }
+
+        }
+
+        /* Logout Popup */
+
+.logout-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.logout-box {
+    width: 380px;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.logout-icon {
+    font-size: 45px;
+    color: #6d78ed;
+    margin-bottom: 10px;
+}
+
+.logout-box h2 {
+    margin-bottom: 10px;
+}
+
+.logout-box p {
+    color: #71839d;
+    margin-bottom: 25px;
+}
+
+.logout-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logout-buttons button {
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.logout-buttons button:first-child {
+    background: #6d78ed;
+    color: white;
+}
+
+.logout-buttons button:last-child {
+    background: #eeeeee;
+    color: #333;
+}
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside>
+
+            <div class="top">
+
+                <div class="logo">
+
+                    <h2>
+                        Admin<span class="danger">Dashboard</span>
+                    </h2>
+
+                </div>
+
+                <div class="close" id="close_btn">
+
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar">
+
+                <!-- Dashboard -->
+
+                <a href="Admin dashboardproject.html">
+
+                    <span class="material-symbols-outlined">
+                        dashboard
+                    </span>
+
+                    <h3>Dashboard</h3>
+
+                </a>
+
+
+                <!-- Customers -->
+
+                <a href="customers.html">
+
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+
+                    <h3>Customers</h3>
+
+                </a>
+
+
+                <!-- Analytics -->
+
+                <a href="analytics.html">
+
+                    <span class="material-symbols-outlined">
+                        insights
+                    </span>
+
+                    <h3>Analytics</h3>
+
+                </a>
+
+
+                <!-- Messages -->
+
+                <a href="messages.html" class="active">
+
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+
+                    <h3>Messages</h3>
+
+                </a>
+
+
+                <!-- Products -->
+
+                <a href="products.html">
+
+                    <span class="material-symbols-outlined">
+                        inventory
+                    </span>
+
+                    <h3>Products</h3>
+
+                </a>
+
+
+                <!-- Reports -->
+
+                <a href="reports.html">
+
+                    <span class="material-symbols-outlined">
+                        report
+                    </span>
+
+                    <h3>Reports</h3>
+
+                </a>
+
+
+                <!-- Settings -->
+
+                <a href="settings.html">
+
+                    <span class="material-symbols-outlined">
+                        settings
+                    </span>
+
+                    <h3>Settings</h3>
+
+                </a>
+
+
+                <!-- Add Product -->
+
+                <a href="Add-Product.html">
+
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+
+                    <h3>Add Product</h3>
+
+                </a>
+
+
+                <!-- Logout -->
+
+                <a href="#" class="logout" onclick="showLogoutPopup(event)">
+
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+
+                    <h3>Logout</h3>
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main>
+
+            <h1>Messages</h1>
+
+
+            <!-- ================= MESSAGE SUMMARY ================= -->
+
+            <div class="message-summary">
+
+
+                <div class="message-card">
+
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+
+                    <div>
+
+                        <h3>Total Messages</h3>
+
+                        <h2>12</h2>
+
+                        <p>All received messages</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-card">
+
+                    <span class="material-symbols-outlined">
+                        mark_email_unread
+                    </span>
+
+                    <div>
+
+                        <h3>Unread Messages</h3>
+
+                        <h2>5</h2>
+
+                        <p>Need your attention</p>
+
+                    </div>
+
+                </div>
+
+
+                <div class="message-card">
+
+                    <span class="material-symbols-outlined">
+                        mark_email_read
+                    </span>
+
+                    <div>
+
+                        <h3>Read Messages</h3>
+
+                        <h2>7</h2>
+
+                        <p>Already reviewed</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- ================= INBOX ================= -->
+
+            <div class="inbox-container">
+
+                <h2>Inbox</h2>
+
+
+                <table class="message-table">
+
+                    <thead>
+
+                        <tr>
+
+                            <th>Sender Name</th>
+
+                            <th>Subject / Message</th>
+
+                            <th>Date</th>
+
+                            <th>Status</th>
+
+                        </tr>
+
+                    </thead>
+
+
+                    <tbody>
+
+
+                        <tr class="unread">
+
+                            <td class="sender">
+                                Rahul Sharma
+                            </td>
+
+                            <td>
+
+                                <div class="subject">
+                                    Order Confirmation
+                                </div>
+
+                                <div class="message-preview">
+                                    Please confirm my recent order details.
+                                </div>
+
+                            </td>
+
+                            <td class="message-date">
+                                16 Sep 2026
+                            </td>
+
+                            <td class="unread-status">
+                                Unread
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="sender">
+                                Priya Singh
+                            </td>
+
+                            <td>
+
+                                <div class="subject">
+                                    Payment Query
+                                </div>
+
+                                <div class="message-preview">
+                                    I need help regarding my payment status.
+                                </div>
+
+                            </td>
+
+                            <td class="message-date">
+                                15 Sep 2026
+                            </td>
+
+                            <td class="read-status">
+                                Read
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="unread">
+
+                            <td class="sender">
+                                Aman Verma
+                            </td>
+
+                            <td>
+
+                                <div class="subject">
+                                    Product Availability
+                                </div>
+
+                                <div class="message-preview">
+                                    Is this product currently available?
+                                </div>
+
+                            </td>
+
+                            <td class="message-date">
+                                14 Sep 2026
+                            </td>
+
+                            <td class="unread-status">
+                                Unread
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="sender">
+                                Neha Gupta
+                            </td>
+
+                            <td>
+
+                                <div class="subject">
+                                    Account Support
+                                </div>
+
+                                <div class="message-preview">
+                                    I need assistance with my account.
+                                </div>
+
+                            </td>
+
+                            <td class="message-date">
+                                13 Sep 2026
+                            </td>
+
+                            <td class="read-status">
+                                Read
+                            </td>
+
+                        </tr>
+
+
+                        <tr class="unread">
+
+                            <td class="sender">
+                                Rohit Kumar
+                            </td>
+
+                            <td>
+
+                                <div class="subject">
+                                    Delivery Update
+                                </div>
+
+                                <div class="message-preview">
+                                    Please provide an update on my delivery.
+                                </div>
+
+                            </td>
+
+                            <td class="message-date">
+                                12 Sep 2026
+                            </td>
+
+                            <td class="unread-status">
+                                Unread
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="sender">
+                                Anjali Mehta
+                            </td>
+
+                            <td>
+
+                                <div class="subject">
+                                    Refund Request
+                                </div>
+
+                                <div class="message-preview">
+                                    I would like to know about my refund.
+                                </div>
+
+                            </td>
+
+                            <td class="message-date">
+                                11 Sep 2026
+                            </td>
+
+                            <td class="read-status">
+                                Read
+                            </td>
+
+                        </tr>
+
+
+                        <tr>
+
+                            <td class="sender">
+                                Vivek Singh
+                            </td>
+
+                            <td>
+
+                                <div class="subject">
+                                    General Enquiry
+                                </div>
+
+                                <div class="message-preview">
+                                    I have a question about your services.
+                                </div>
+
+                            </td>
+
+                            <td class="message-date">
+                                10 Sep 2026
+                            </td>
+
+                            <td class="read-status">
+                                Read
+                            </td>
+
+                        </tr>
+
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </main>
+
+    </div>
+
+ <!-- Logout Confirmation Popup -->
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <span class="material-symbols-outlined logout-icon">
+            logout
+        </span>
+
+        <h2>Logout confirmation</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button onclick="confirmLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

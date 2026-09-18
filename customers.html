@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customers - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+.customer-summary {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 20px !important;
+    margin: 25px 0 !important;
+}
+
+.customer-card {
+    background: white !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 15px !important;
+    min-height: 110px !important;
+}
+
+.customer-card > span {
+    background: #6c63ff !important;
+    color: white !important;
+    padding: 12px !important;
+    border-radius: 50% !important;
+    font-size: 28px !important;
+}
+
+.customer-card h3 {
+    margin: 0 0 5px 0 !important;
+}
+
+.customer-card h2 {
+    margin: 0 0 5px 0 !important;
+    font-size: 28px !important;
+}
+
+.customer-card p {
+    margin: 0 !important;
+}
+
+
+/* Customer Activity */
+
+.customer-activity {
+    margin-top: 25px !important;
+}
+
+.activity-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 20px !important;
+}
+
+.activity-grid > div {
+    background: white !important;
+    padding: 20px !important;
+    border-radius: 20px !important;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08) !important;
+    text-align: center !important;
+}
+
+.activity-grid span {
+    font-size: 30px !important;
+    margin-bottom: 10px !important;
+    color: #6c63ff !important;
+}
+
+.activity-grid h3 {
+    margin: 5px 0 !important;
+}
+
+.activity-grid p {
+    margin: 0 !important;
+}
+
+
+/* Responsive */
+
+@media screen and (max-width: 900px) {
+
+    .customer-summary {
+        grid-template-columns: 1fr !important;
+    }
+
+    .activity-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+
+}
+
+/* Logout Popup */
+
+.logout-popup {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.45);
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+}
+
+.logout-box {
+    width: 380px;
+    background: white;
+    padding: 30px;
+    border-radius: 18px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.logout-icon {
+    font-size: 45px;
+    color: #6d78ed;
+    margin-bottom: 10px;
+}
+
+.logout-box h2 {
+    margin-bottom: 10px;
+}
+
+.logout-box p {
+    color: #71839d;
+    margin-bottom: 25px;
+}
+
+.logout-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.logout-buttons button {
+    border: none;
+    padding: 11px 22px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+}
+
+.logout-buttons button:first-child {
+    background: #6d78ed;
+    color: white;
+}
+
+.logout-buttons button:last-child {
+    background: #eeeeee;
+    color: #333;
+}
+
+</style>
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- Sidebar -->
+        <aside>
+
+            <div class="top">
+                <div class="logo">
+                    <h2>Admin<span class="danger">Dashboard</span></h2>
+                </div>
+
+                <div class="close" id="close_btn">
+                    <span class="material-symbols-outlined">close</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+
+                <a href="Admin dashboardproject.html">
+                    <span class="material-symbols-outlined">dashboard</span>
+                    <h3>Dashboard</h3>
+                </a>
+
+                <a href="customers.html" class="active">
+                    <span class="material-symbols-outlined">person</span>
+                    <h3>Customers</h3>
+                </a>
+
+                <a href="analytics.html">
+                    <span class="material-symbols-outlined">insights</span>
+                    <h3>Analytics</h3>
+                </a>
+
+                <a href="messages.html">
+                    <span class="material-symbols-outlined">mail</span>
+                    <h3>Messages</h3>
+                </a>
+
+                <a href="products.html">
+                    <span class="material-symbols-outlined">inventory</span>
+                    <h3>Products</h3>
+                </a>
+
+                <a href="reports.html">
+                    <span class="material-symbols-outlined">report</span>
+                    <h3>Reports</h3>
+                </a>
+
+                <a href="settings.html">
+                    <span class="material-symbols-outlined">settings</span>
+                    <h3>Settings</h3>
+                </a>
+
+                <a href="Add-Product.html">
+                    <span class="material-symbols-outlined">add</span>
+                    <h3>Add Product</h3>
+                </a>
+
+                <a href="#" class="logout" onclick="showLogoutPopup(event)">
+                    <span class="material-symbols-outlined">logout</span>
+                    <h3>Logout</h3>
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- Main Content -->
+        <main>
+
+            <h1>Customers</h1>
+
+                        <!-- Customer Summary -->
+            <div class="customer-summary">
+
+                <div class="customer-card">
+                    <span class="material-symbols-outlined">groups</span>
+                    <div>
+                        <h3>Total Customers</h3>
+                        <h2>5</h2>
+                        <p>Registered Customers</p>
+                    </div>
+                </div>
+
+                <div class="customer-card">
+                    <span class="material-symbols-outlined">person_check</span>
+                    <div>
+                        <h3>Active Customers</h3>
+                        <h2>4</h2>
+                        <p>Currently Active</p>
+                    </div>
+                </div>
+
+                <div class="customer-card">
+                    <span class="material-symbols-outlined">person_off</span>
+                    <div>
+                        <h3>Inactive Customers</h3>
+                        <h2>1</h2>
+                        <p>Needs Attention</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="recent_order">
+
+                <h2>Customer List</h2>
+
+                <table>
+
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Status</th>
+                            <th>Registration Date</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+
+                        <tr>
+                            <td>Rahul Sharma</td>
+                            <td>rahul@gmail.com</td>
+                            <td>9876543210</td>
+                            <td class="success">Active</td>
+                            <td>15 Jan 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>Priya Singh</td>
+                            <td>priya@gmail.com</td>
+                            <td>9876543211</td>
+                            <td class="success">Active</td>
+                            <td>22 Jan 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>Aman Verma</td>
+                            <td>aman@gmail.com</td>
+                            <td>9876543212</td>
+                            <td class="danger">Inactive</td>
+                            <td>05 Feb 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>Neha Gupta</td>
+                            <td>neha@gmail.com</td>
+                            <td>9876543213</td>
+                            <td class="success">Active</td>
+                            <td>18 Feb 2026</td>
+                        </tr>
+
+                        <tr>
+                            <td>Rohit Kumar</td>
+                            <td>rohit@gmail.com</td>
+                            <td>9876543214</td>
+                            <td class="success">Active</td>
+                            <td>03 Mar 2026</td>
+                        </tr>
+
+                    </tbody>
+
+                </table>
+
+            </div>
+
+                            </table>
+
+            </div>
+
+
+            <!-- Customer Activity -->
+            <div class="customer-activity">
+
+                <h2>Customer Overview</h2>
+
+                <div class="activity-grid">
+
+                    <div>
+                        <span class="material-symbols-outlined">person_add</span>
+                        <h3>5</h3>
+                        <p>Total Registered</p>
+                    </div>
+
+                    <div>
+                        <span class="material-symbols-outlined">verified</span>
+                        <h3>4</h3>
+                        <p>Active Accounts</p>
+                    </div>
+
+                    <div>
+                        <span class="material-symbols-outlined">calendar_month</span>
+                        <h3>03 Mar 2026</h3>
+                        <p>Latest Registration</p>
+                    </div>
+
+                    <div>
+                        <span class="material-symbols-outlined">trending_up</span>
+                        <h3>80%</h3>
+                        <p>Active Rate</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+        
+
+        </main>
+
+    </div>
+
+    
+
+    <!-- Logout Confirmation Popup -->
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <span class="material-symbols-outlined logout-icon">
+            logout
+        </span>
+
+        <h2>Logout confirmation</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button onclick="confirmLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Settings - Admin Dashboard</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Symbols+Outlined" rel="stylesheet">
+
+    <style>
+
+        /* ================= SETTINGS PAGE ================= */
+
+        .settings-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .settings-box {
+            background: var(--clr-white);
+            padding: 1.5rem;
+            border-radius: var(--border-radius-2);
+            box-shadow: var(--box-shadow);
+        }
+
+        .settings-box h2 {
+            margin-bottom: 1.5rem;
+        }
+
+        .settings-box h3 {
+            margin-bottom: 0.4rem;
+        }
+
+        .settings-box p {
+            color: var(--clr-info-dark);
+            margin-bottom: 1rem;
+        }
+
+        .setting-item {
+            margin-bottom: 1.2rem;
+        }
+
+        .setting-item label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .setting-item input,
+        .setting-item select {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid var(--clr-info-light);
+            border-radius: var(--border-radius-1);
+            background: var(--clr-background);
+            font-family: inherit;
+        }
+
+        .setting-item input:focus,
+        .setting-item select:focus {
+            outline: none;
+            border-color: var(--clr-primary);
+        }
+
+        .notification-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--clr-info-light);
+        }
+
+        .notification-item:last-child {
+            border-bottom: none;
+        }
+
+        .notification-info h3 {
+            margin-bottom: 0.3rem;
+        }
+
+        .notification-info p {
+            margin: 0;
+            font-size: 0.85rem;
+        }
+
+        .toggle {
+            width: 45px;
+            height: 24px;
+            position: relative;
+        }
+
+        .toggle input {
+            display: none;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            inset: 0;
+            background: var(--clr-info-light);
+            border-radius: 20px;
+            transition: 0.3s;
+        }
+
+        .slider:before {
+            content: "";
+            position: absolute;
+            height: 18px;
+            width: 18px;
+            left: 3px;
+            top: 3px;
+            background: white;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+
+        .toggle input:checked + .slider {
+            background: var(--clr-primary);
+        }
+
+        .toggle input:checked + .slider:before {
+            transform: translateX(21px);
+        }
+
+        .save-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.8rem 1.2rem;
+            background: var(--clr-primary);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-1);
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+        }
+
+        .save-btn:hover {
+            opacity: 0.9;
+        }
+
+        .profile-icon {
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--clr-primary);
+            color: white;
+            border-radius: 50%;
+            margin-bottom: 1rem;
+        }
+
+        .profile-icon span {
+            font-size: 35px;
+        }
+
+        @media screen and (max-width: 900px) {
+
+            .settings-container {
+                grid-template-columns: 1fr;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+    <div class="container">
+
+
+        <!-- ================= SIDEBAR ================= -->
+
+        <aside>
+
+            <div class="top">
+
+                <div class="logo">
+
+                    <h2>
+                        Admin<span class="danger">Dashboard</span>
+                    </h2>
+
+                </div>
+
+                <div class="close" id="close_btn">
+
+                    <span class="material-symbols-outlined">
+                        close
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <div class="sidebar">
+
+
+                <!-- Dashboard -->
+
+                <a href="Admin dashboardproject.html">
+
+                    <span class="material-symbols-outlined">
+                        dashboard
+                    </span>
+
+                    <h3>Dashboard</h3>
+
+                </a>
+
+
+                <!-- Customers -->
+
+                <a href="customers.html">
+
+                    <span class="material-symbols-outlined">
+                        person
+                    </span>
+
+                    <h3>Customers</h3>
+
+                </a>
+
+
+                <!-- Analytics -->
+
+                <a href="analytics.html">
+
+                    <span class="material-symbols-outlined">
+                        insights
+                    </span>
+
+                    <h3>Analytics</h3>
+
+                </a>
+
+
+                <!-- Messages -->
+
+                <a href="messages.html">
+
+                    <span class="material-symbols-outlined">
+                        mail
+                    </span>
+
+                    <h3>Messages</h3>
+
+                </a>
+
+
+                <!-- Products -->
+
+                <a href="products.html">
+
+                    <span class="material-symbols-outlined">
+                        inventory
+                    </span>
+
+                    <h3>Products</h3>
+
+                </a>
+
+
+                <!-- Reports -->
+
+                <a href="reports.html">
+
+                    <span class="material-symbols-outlined">
+                        report
+                    </span>
+
+                    <h3>Reports</h3>
+
+                </a>
+
+
+                <!-- Settings -->
+
+                <a href="settings.html" class="active">
+
+                    <span class="material-symbols-outlined">
+                        settings
+                    </span>
+
+                    <h3>Settings</h3>
+
+                </a>
+
+
+                <!-- Add Product -->
+
+                <a href="Add-Product.html">
+
+                    <span class="material-symbols-outlined">
+                        add
+                    </span>
+
+                    <h3>Add Product</h3>
+
+                </a>
+
+
+                <!-- Logout -->
+
+                <a href="#" class="logout" onclick="showLogoutPopup(event)">
+
+                    <span class="material-symbols-outlined">
+                        logout
+                    </span>
+
+                    <h3>Logout</h3>
+
+                </a>
+
+            </div>
+
+        </aside>
+
+
+        <!-- ================= MAIN CONTENT ================= -->
+
+        <main>
+
+            <h1>Settings</h1>
+
+
+            <div class="settings-container">
+
+
+                <!-- ================= PROFILE SETTINGS ================= -->
+
+                <div class="settings-box">
+
+                    <h2>Profile Settings</h2>
+
+                    <div class="profile-icon">
+
+                        <span class="material-symbols-outlined">
+                            person
+                        </span>
+
+                    </div>
+
+                    <div class="setting-item">
+
+                        <label>Full Name</label>
+
+                        <input type="text" value="Admin User">
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <label>Email Address</label>
+
+                        <input type="email" value="admin@example.com">
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <label>Phone Number</label>
+
+                        <input type="tel" value="+91 9876543210">
+
+                    </div>
+
+                    <button class="save-btn">
+
+                        <span class="material-symbols-outlined">
+                            save
+                        </span>
+
+                        Save Profile
+
+                    </button>
+
+                </div>
+
+
+                <!-- ================= ACCOUNT INFORMATION ================= -->
+
+                <div class="settings-box">
+
+                    <h2>Account Information</h2>
+
+                    <div class="setting-item">
+
+                        <h3>Account Type</h3>
+
+                        <p>Administrator</p>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <h3>Account Status</h3>
+
+                        <p>Active</p>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <h3>Registration Date</h3>
+
+                        <p>15 January 2026</p>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <h3>Last Login</h3>
+
+                        <p>16 September 2026</p>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= CHANGE PASSWORD ================= -->
+
+                <div class="settings-box">
+
+                    <h2>Change Password</h2>
+
+                    <div class="setting-item">
+
+                        <label>Current Password</label>
+
+                        <input type="password" placeholder="Enter current password">
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <label>New Password</label>
+
+                        <input type="password" placeholder="Enter new password">
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <label>Confirm New Password</label>
+
+                        <input type="password" placeholder="Confirm new password">
+
+                    </div>
+
+                    <button class="save-btn">
+
+                        <span class="material-symbols-outlined">
+                            lock
+                        </span>
+
+                        Change Password
+
+                    </button>
+
+                </div>
+
+
+                <!-- ================= NOTIFICATIONS ================= -->
+
+                <div class="settings-box">
+
+                    <h2>Notifications</h2>
+
+
+                    <div class="notification-item">
+
+                        <div class="notification-info">
+
+                            <h3>Email Notifications</h3>
+
+                            <p>Receive important updates through email.</p>
+
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="notification-item">
+
+                        <div class="notification-info">
+
+                            <h3>Order Notifications</h3>
+
+                            <p>Get notified when a new order is placed.</p>
+
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="notification-item">
+
+                        <div class="notification-info">
+
+                            <h3>Customer Notifications</h3>
+
+                            <p>Receive updates about customer activity.</p>
+
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox">
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+
+                    <div class="notification-item">
+
+                        <div class="notification-info">
+
+                            <h3>Security Alerts</h3>
+
+                            <p>Receive alerts about account security.</p>
+
+                        </div>
+
+                        <label class="toggle">
+
+                            <input type="checkbox" checked>
+
+                            <span class="slider"></span>
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+                <!-- ================= DASHBOARD PREFERENCES ================= -->
+
+                <div class="settings-box">
+
+                    <h2>Dashboard Preferences</h2>
+
+
+                    <div class="setting-item">
+
+                        <label>Theme</label>
+
+                        <select>
+
+                            <option>Light</option>
+                            <option>Dark</option>
+                            <option>System Default</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <label>Language</label>
+
+                        <select>
+
+                            <option>English</option>
+                            <option>Hindi</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="setting-item">
+
+                        <label>Items Per Page</label>
+
+                        <select>
+
+                            <option>10</option>
+                            <option>20</option>
+                            <option>50</option>
+
+                        </select>
+
+                    </div>
+
+
+                    <button class="save-btn">
+
+                        <span class="material-symbols-outlined">
+                            save
+                        </span>
+
+                        Save Preferences
+
+                    </button>
+
+                </div>
+
+
+            </div>
+
+        </main>
+
+    </div>
+
+     <!-- Logout Confirmation Popup -->
+<div id="logoutPopup" class="logout-popup">
+
+    <div class="logout-box">
+
+        <span class="material-symbols-outlined logout-icon">
+            logout
+        </span>
+
+        <h2>Logout confirmation</h2>
+
+        <p>Are you sure you want to logout?</p>
+
+        <div class="logout-buttons">
+            <button onclick="confirmLogout()">Yes, Logout</button>
+            <button onclick="closeLogoutPopup()">Cancel</button>
+        </div>
+
+    </div>
+
+</div>
+
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
